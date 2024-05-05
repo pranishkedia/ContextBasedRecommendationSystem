@@ -3,6 +3,7 @@ from datetime import datetime
 from weather_api import get_weather
 from weather_recommender import make_recommendation
 
+
 app = Flask(__name__)
 
 # OpenWeatherMap API key

@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import random
 
 # Load music data
 music_data = pd.read_csv('music.csv')
@@ -31,7 +32,6 @@ def make_recommendation(weather, current_time):
         mood = 'Upbeat'
     elif part_of_day == 'Morning' and 'Rain' in weather:
         mood = 'Calm'
-    
     elif part_of_day == 'Evening' and 'Sunny' in weather:
         mood = 'Upbeat'
     elif part_of_day == 'Evening' and 'Clear' in weather:
@@ -43,7 +43,8 @@ def make_recommendation(weather, current_time):
     else:
         mood = 'Calm'  # Default mood for other conditions
 
-    filtered_artists = music_data[music_data['Mood'] == mood]['artist.name']
-    recommended_artists = filtered_artists.head(10).tolist()  # Take only the first 10 artists
+    filtered_artists = music_data[music_data['Mood'] == mood]['artist.name'].tolist()
+    random.shuffle(filtered_artists)  # Shuffle the list of filtered artists
+    recommended_artists = filtered_artists[:10]  # Take only the first 10 artists after shuffling
 
     return recommended_artists, part_of_day
