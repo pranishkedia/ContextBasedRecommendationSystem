@@ -7,6 +7,9 @@ def home():
     # Home page with just basic instructions and a link to the recommendations page
     return render_template('index.html')
 
+@app.route('/enter_weather')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
