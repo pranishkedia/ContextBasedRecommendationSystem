@@ -1,0 +1,82 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+    background-color: #78909C;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+}
+
+p {
+    font-family: 'Ubuntu', sans-serif;
+    width: 650px;
+    height: 300px;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #78909C; /* Adjust the color as needed */
+    color: #ffffff;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.container {
+    display:inline-flex;
+    justify-content: center;  /* Center the buttons horizontally */
+    align-items: center;      /* Align the buttons vertically */
+    gap: 100px;
+}
+
+
+.icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icon and text */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding around content */
+    height: 150px;
+    width: 150px; /* Set a specific width */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow for 3D effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.icon-btn:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+.icon-btn .emoji {
+    font-size: 55px; /* Large size for emoji */
+    margin-bottom: 10px; /* Space between emoji and text */
+}
+
+.icon-btn p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Smaller font size */
+}
