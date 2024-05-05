@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Live Mood Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Music Recommendations Based on Mood</h1>
+<video id="video" width="640" height="480" autoplay></video>
+<div id="moodDisplay">Mood: Unknown</div>
+<button id="startButton">Start Detection</button>
+<div id="songList">Songs:</div>
+
+<a href="{{ url_for('home') }}">Back to Home</a>
+
+<script>
+    const video = document.getElementById('video');
+    const moodDisplay = document.getElementById('moodDisplay');
+    const startButton = document.getElementById('startButton');
+    const songList = document.getElementById('songList');
+
+    // Prompt user to grant access to the webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(console.error);
+
+    startButton.onclick = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 640;
+        canvas.height = 480;
+        const context = canvas.getContext('2d');
+
+        // Capture a single frame
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataURL = canvas.toDataURL('image/jpeg');
+
+        // Send the frame to the server
+        fetch('/process_frame', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ image: dataURL })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Debugging to see the fetched data
+            moodDisplay.textContent = 'Mood: ' + data.emotion; // Update mood display
+            updateSongList(data.songs); // Update song list display
+        })
+        .catch(console.error);
+    };
+
+    function updateSongList(songs) {
+        const listElement = document.createElement('ul'); // Create a <ul> element
+        songs.forEach(song => {
+            const listItem = document.createElement('li'); // Create a <li> element for each song
+            listItem.textContent = song; // Set text content to the song name
+            listElement.appendChild(listItem); // Append the list item to the list
+        });
+
+        songList.innerHTML = ''; // Clear existing content
+        songList.appendChild(listElement); // Append the new list to the songList div
+    }
+</script>
+</body>
+</html>
+
+
