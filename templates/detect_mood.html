@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Live Mood Detection</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='mood.css') }}">
 </head>
 <body>
     <h1>Music Recommendations Based on Mood</h1>
 <video id="video" width="640" height="480" autoplay></video>
-<div id="moodDisplay">Mood: Unknown</div>
+<div id="moodDisplay"></div>
 <button id="startButton">Start Detection</button>
 <div id="songList">Songs:</div>
 
-<a href="{{ url_for('home') }}">Back to Home</a>
+<a href="{{ url_for('home') }}" class="button-link">Back to Home</a>
 
 <script>
     const video = document.getElementById('video');
