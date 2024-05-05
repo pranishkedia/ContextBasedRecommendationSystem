@@ -21,12 +21,14 @@
         </div>
 
     <div class="container">
-        <div class="option">
-            <button class="icon-btn">
-                <span class="emoji">🌦️</span>
-                <p>Weather</p>
-            </button>  
-        </div>
+        <form action="{{ url_for('recommendations') }}" method="get">
+            <div class="option">
+                <button class="icon-btn" type="submit">
+                    <span class="emoji">🌦️</span>
+                    <p>Weather</p>
+                </button>  
+            </div>
+        </form>
         
         <div class="option">
             <button class="icon-btn">

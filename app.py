@@ -7,7 +7,7 @@ from weather_recommender import make_recommendation
 app = Flask(__name__)
 
 # OpenWeatherMap API key
-API_KEY = 'e513208bf4d559b7d650a93d69d4c160'
+API_KEY = 'SECRET_KEY'
 DEFAULT_LOCATION = 'Newcastle upon Tyne'
 
 @app.route('/')
